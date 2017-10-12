@@ -1,7 +1,9 @@
 # *************************************************************************
-# Scraps coursediggers.com .json file to allow statistics usage
-#  Milo Todt
-#   [2017]
+# Scraps coursediggers.com .json files to allow statistics usage
+#  
+#
+#  Milo Todt // www.github.com/MiloTodt // Milo@milotodt.com // [2017]
+# *************************************************************************
 
 
 require 'open-uri'
@@ -9,7 +11,7 @@ for i in (1..10375) do #This will take a while, about 5 minutes. If you're just 
     url = 'http://www.coursediggers.com/data/' + i.to_s + '.json'
     begin
         source = open(url){|f|f.read}
-    rescue OpenURI::HTTPError
+    rescue OpenURI::HTTPError #404's salvage, not all numbers are taken.
         puts "skipped"
     else
     File.open("courses.txt", "a") do |f|
@@ -48,11 +50,10 @@ class Course
     end
 end
 
-
 #formats .json to simple text file
 c1 = Course.new("Macm 101", "A", "0.4", [0,1,1,7,14,24,27,39,28,20,4]) #example format
-file = File.new("courses.txt", "r")
 
+file = File.new("courses.txt", "r")
 marks = Array.new(9)
  while (line = file.gets) != nil
     if(line.include?("name"))
