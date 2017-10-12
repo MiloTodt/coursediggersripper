@@ -54,6 +54,7 @@ end
 #formats .json to simple text file
 c1 = Course.new("Macm 101", "A", "0.4", [0,1,1,7,14,24,27,39,28,20,4]) #example format
 
+file = File.new("data.txt", "r")
 file = File.new("courses.txt", "r")
 marks = Array.new(9)
  while (line = file.gets) != nil
