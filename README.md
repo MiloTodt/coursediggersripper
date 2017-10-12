@@ -16,5 +16,7 @@ Format of data.txt:
 
 Course name, Enrollment number, Average grade, Fail %
 
+Can show grade distribution but is currently commented out awaiting better formating.
+
 
 
