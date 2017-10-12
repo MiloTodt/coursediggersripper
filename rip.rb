@@ -47,9 +47,8 @@ class Course
             file = File.open("data.txt", "a") do |f|
                 f.write(outString)
             end
-            end
         end
-    end
+     end
 end
 
 #formats .json to simple text file
