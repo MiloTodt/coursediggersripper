@@ -26,9 +26,9 @@ end #saves as JSON which is formatted down below
 class Course
     def initialize(nameIn, gradeLetter,  failRate, grades) #used a class for additional control of future integration
 	@name = nameIn
-    @medianGradeLetter = gradeLetter
+   	 @medianGradeLetter = gradeLetter
 	@failRate = failRate
-    @grades = grades
+   	 @grades = grades
     end
     
     def saveInfo #saves to CSV text file, one entry per line
@@ -41,10 +41,9 @@ class Course
         # #     gradeString += "#{grade}, "
         # #  end
         # } 
-        if(@failRate.is_a? Integer) do #hackish fix for change of formating in json files for classes with multiple teachers
+        if(@failRate.is_a? Integer) #hackish fix for change of formating in json files for classes with multiple teachers
             outString = String.new()
             outString = "#{@name},  #{@grades.reduce(0, :+)}, #{@medianGradeLetter},   #{@failRate}\n"
-            file = File.new("data.txt", "w") do |f| end #just making sure file exists
             file = File.open("data.txt", "a") do |f|
                 f.write(outString)
             end
