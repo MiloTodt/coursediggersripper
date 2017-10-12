@@ -1,11 +1,11 @@
 # coursediggersripper
 Rips data for SFU courses from www.coursediggers.com 
 
-#usage
+# usage
 "ruby rip.rb"
 If you're just trying it out, lower the upper bound of the first loop or it will take a while to gather data.
 
-#structure
+# structure
 
 Raw .json saved to courses.txt
 Pure data in data.txt
