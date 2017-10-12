@@ -1,7 +1,11 @@
-#scrapes coursediggers
-#this part will take a while (5 mins)
+# *************************************************************************
+# Scraps coursediggers.com .json file to allow statistics usage
+#  Milo Todt
+#   [2017]
+
+
 require 'open-uri'
-for i in (1..10375) do
+for i in (1..10375) do #This will take a while, about 5 minutes. If you're just trying the code out lower the upper bound to a few hundred
     url = 'http://www.coursediggers.com/data/' + i.to_s + '.json'
     begin
         source = open(url){|f|f.read}
@@ -18,7 +22,7 @@ end #saves as JSON which is formatted down below
 
 
 class Course
-    def initialize(nameIn, gradeLetter,  failRate, grades)
+    def initialize(nameIn, gradeLetter,  failRate, grades) #used a class for additional control of future integration
 	@name = nameIn
     @medianGradeLetter = gradeLetter
 	@failRate = failRate
@@ -26,14 +30,18 @@ class Course
     end
     def saveInfo #saves to CSV text file, one entry per line
         #Format: Name, Enrollment, Average Grade, Fail Rate 
-        gradeString = ""
-        @grades.each{|grade|  
-        # if (grade != nil) then 
-        #     gradeString += "#{grade}, "
-        #  end
-        }
+
+        #This is for if you want to output how many people recieved each grade.
+        # gradeString = ""
+        # @grades.each{|grade|  
+        # # if (grade != nil) then 
+        # #     gradeString += "#{grade}, "
+        # #  end
+        # } 
+
         outString = String.new()
         outString = "#{@name},  #{@grades.reduce(0, :+)}, #{@medianGradeLetter},   #{@failRate}\n"
+        file = File.new("data.txt", "w") do |f| end #just making sure file exists
          file = File.open("data.txt", "a") do |f|
              f.write(outString)
          end
@@ -48,9 +56,9 @@ file = File.new("courses.txt", "r")
 marks = Array.new(9)
  while (line = file.gets) != nil
     if(line.include?("name"))
-        cName = line.split(": \"")[1].split("\",")[0]
+        cName = line.split(": \"")[1].split("\",")[0] #name of course
     elsif(line.include?("\"data\":"))
-        cData =  line.split("[[")[1].split("]]")[0].split(",")
+        cData =  line.split("[[")[1].split("]]")[0].split(",") #all other info
         for i in (2..12)
             marks[i-2] = cData[i].to_i
         end
