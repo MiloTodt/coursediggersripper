@@ -1,5 +1,5 @@
 # *************************************************************************
-# Scraps coursediggers.com .json files to allow statistics usage
+# Scrapes coursediggers.com .json files to allow statistics usage
 #  
 #
 #  Milo Todt // www.github.com/MiloTodt // Milo@milotodt.com // [2017]
@@ -30,6 +30,7 @@ class Course
 	@failRate = failRate
     @grades = grades
     end
+    
     def saveInfo #saves to CSV text file, one entry per line
         #Format: Name, Enrollment, Average Grade, Fail Rate 
 
@@ -40,13 +41,15 @@ class Course
         # #     gradeString += "#{grade}, "
         # #  end
         # } 
-
-        outString = String.new()
-        outString = "#{@name},  #{@grades.reduce(0, :+)}, #{@medianGradeLetter},   #{@failRate}\n"
-        file = File.new("data.txt", "w") do |f| end #just making sure file exists
-         file = File.open("data.txt", "a") do |f|
-             f.write(outString)
-         end
+        if(@failRate.is_a? Integer) do #hackish fix for change of formating in json files for classes with multiple teachers
+            outString = String.new()
+            outString = "#{@name},  #{@grades.reduce(0, :+)}, #{@medianGradeLetter},   #{@failRate}\n"
+            file = File.new("data.txt", "w") do |f| end #just making sure file exists
+            file = File.open("data.txt", "a") do |f|
+                f.write(outString)
+            end
+            end
+        end
     end
 end
 
