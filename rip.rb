@@ -26,9 +26,9 @@ end #saves as JSON which is formatted down below
 class Course
     def initialize(nameIn, gradeLetter,  failRate, grades) #used a class for additional control of future integration
 	@name = nameIn
-   	 @medianGradeLetter = gradeLetter
+   	@medianGradeLetter = gradeLetter
 	@failRate = failRate
-   	 @grades = grades
+   	@grades = grades
     end
     
     def saveInfo #saves to CSV text file, one entry per line
