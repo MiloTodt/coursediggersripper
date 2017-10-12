@@ -1,5 +1,6 @@
 # coursediggersripper
 Rips data for SFU courses from www.coursediggers.com 
+This allows data such as fail rate, enrolment numbers, grade distribution.
 
 # usage
 "ruby rip.rb"
