@@ -6,6 +6,8 @@ This allows data such as fail rate, enrolment numbers, grade distribution.
 "ruby rip.rb"
 If you're just trying it out, lower the upper bound of the first loop or it will take a while to gather data.
 
+To only view the result, please look in data.txt instead of running the script again for the sake of their bandwidth!
+
 # structure
 
 Raw .json saved to courses.txt
