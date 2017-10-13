@@ -39,7 +39,7 @@ class Course
         # #     gradeString += "#{grade}, "
         # #  end
         # } 
-        if(@medianGradeLetter.length < 4) #hackish fix for change of formating in json files for classes with multiple teachers
+        if(@medianGradeLetter.length <= 4) #hackish fix for change of formating in json files for classes with multiple teachers
             outString = String.new()
             outString = "#{@name},  #{@grades.reduce(0, :+)}, #{@medianGradeLetter},   #{@failRate}\n"
             file = File.open("data.txt", "a") do |f|
