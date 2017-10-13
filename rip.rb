@@ -37,7 +37,7 @@ class Course
     def saveInfo #saves to CSV text file, one entry per line
         #Format: Name, Enrollment, Average Grade, Fail Rate 
 
-        #This is for if you want to output how many people recieved each grade.
+        #This is for if you want to output how many people recieved each grade. Add #{gradeString} below.
         # gradeString = ""
         # @grades.each{|grade|  
         # # if (grade != nil) then 
