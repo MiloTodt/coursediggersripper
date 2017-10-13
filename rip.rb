@@ -5,6 +5,11 @@
 #  Milo Todt // www.github.com/MiloTodt // Milo@milotodt.com // [2017]
 # *************************************************************************
 
+out_file = File.new("data.txt", "w") if File.exist?("data.txt") == false
+out_file.close
+out_file = File.new("courses.txt", "w") if File.exist?("courses.txt") == false
+out_file.close
+
 
 require 'open-uri'
 for i in (1..10375) do #This will take a while, about 5 minutes. If you're just trying the code out lower the upper bound to a few hundred
