@@ -1,7 +1,6 @@
 # *************************************************************************
 # Scrapes coursediggers.com .json files to allow statistics usage
 #  
-#
 # www.github.com/MiloTodt // Milo@milotodt.com // www.milotodt.com [2017]
 # *************************************************************************
 
