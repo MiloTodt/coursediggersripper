@@ -6,9 +6,7 @@
 # *************************************************************************
 
 out_file = File.new("data.txt", "w") if File.exist?("data.txt") == false
-out_file.close
 out_file = File.new("courses.txt", "w") if File.exist?("courses.txt") == false
-out_file.close
 
 
 require 'open-uri'
