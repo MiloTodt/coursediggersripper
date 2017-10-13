@@ -2,7 +2,7 @@
 # Scrapes coursediggers.com .json files to allow statistics usage
 #  
 #
-#  Milo Todt // www.github.com/MiloTodt // Milo@milotodt.com // www.milotodt.com [2017]
+# www.github.com/MiloTodt // Milo@milotodt.com // www.milotodt.com [2017]
 # *************************************************************************
 
 out_file = File.new("data.txt", "w") if File.exist?("data.txt") == false
