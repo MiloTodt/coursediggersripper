@@ -6,22 +6,20 @@
 # *************************************************************************
 
 
-# require 'open-uri'
-# for i in (1..10375) do #This will take a while, about 5 minutes. If you're just trying the code out lower the upper bound to a few hundred
-#     url = 'http://www.coursediggers.com/data/' + i.to_s + '.json'
-#     begin
-#         source = open(url){|f|f.read}
-#     rescue OpenURI::HTTPError #404's salvage, not all numbers are taken.
-#         puts "skipped"
-#     else
-#     File.open("courses.txt", "a") do |f|
-#         f.write(source)
-#     end
-#     puts i
-# end
-# end #saves as JSON which is formatted down below
-
-
+require 'open-uri'
+for i in (1..10375) do #This will take a while, about 5 minutes. If you're just trying the code out lower the upper bound to a few hundred
+    url = 'http://www.coursediggers.com/data/' + i.to_s + '.json'
+    begin
+        source = open(url){|f|f.read}
+    rescue OpenURI::HTTPError #404's salvage, not all numbers are taken.
+        puts "skipped"
+    else
+    File.open("courses.txt", "a") do |f|
+        f.write(source)
+    end
+    puts i
+end
+end #saves as JSON which is formatted down below
 
 class Course
     def initialize(nameIn, gradeLetter,  failRate, grades) #used a class for additional control of future integration
@@ -41,7 +39,7 @@ class Course
         # #     gradeString += "#{grade}, "
         # #  end
         # } 
-        if(@failRate.is_a? String) #hackish fix for change of formating in json files for classes with multiple teachers
+        if(@medianGradeLetter.length < 4) #hackish fix for change of formating in json files for classes with multiple teachers
             outString = String.new()
             outString = "#{@name},  #{@grades.reduce(0, :+)}, #{@medianGradeLetter},   #{@failRate}\n"
             file = File.open("data.txt", "a") do |f|
